@@ -55,16 +55,15 @@ const biFloorPlan = Vue.component('bi-floor-plan', {
             });
         },
         selRoom(event) {
-            if(event.currentTarget.className == 'room') {
-                console.log(event.currentTarget);
+            if(event.target.className.baseVal === 'room') {
+                console.log(event.target.id);
             }
         },
         unselRoom(event) {
             //todo
         },
         where(event) {
-            var elements = event.currentTarget.getElementsByClassName('room');
-            console.log(event.target);
+            console.log(event.target.baseVal);
         }
     }
 });
