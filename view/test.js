@@ -48,7 +48,7 @@ const biFloorPlan = Vue.component('bi-floor-plan', {
     },
     methods: {
         getRoomData() {
-            fetch('http://localhost/vue-tuts/api/roomdata')
+            fetch('vue-tuts/api/roomdata?r=nw10og1')
             .then((response) => response.text())
             .then((data) => {
                 this.roomdata = data;

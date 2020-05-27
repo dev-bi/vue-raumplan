@@ -8,9 +8,26 @@ mb_internal_encoding("UTF-8");
 
 $baseUrl = 'http://localhost/vue-tuts';
 $baseRoute = '/vue-tuts';
+$apiSubroute = '/api';
+$roomdataEndpoint = '/roomdata';
 
 $request = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];
+$query = $_SERVER['QUERY_STRING'];
+
+$isApiCall = preg_match('#' . $baseRoute . '\/api' . '\/roomdata\?r=(.)*#', $request);
+
+/*
+* Falls ein API Aufruf, dann den Request für den Router anpassen
+* Abschneiden des querystrings inklusive dem ?
+*/
+
+print_r($request);
+if($isApiCall) {
+    $total_length = strlen($baseRoute) + strlen($apiSubroute) + strlen($roomdataEndpoint);
+    $request = substr($request,0, $total_length);
+    echo "REQUEST: " . $request;
+}
 
 if ($method === 'GET') {
     switch ($request) {
